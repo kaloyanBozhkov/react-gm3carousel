@@ -1,3 +1,9 @@
+# Google Material Design v3 Carousel for React!
+
+> https://m3.material.io/components/carousel/specs
+
+![Alt Text](./demo-gif.gif)
+
 # Usage instructions
 
 ## Step 1. install (npm/bun)
