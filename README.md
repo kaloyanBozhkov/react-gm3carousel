@@ -1,7 +1,5 @@
 # Google Material Design v3 Carousel for React!
 
-> https://m3.material.io/components/carousel/specs
-
 ## Preview
 
 ![Alt Text](https://github.com/kaloyanBozhkov/react-gm3carousel/blob/master/demo-gif.gif?raw=true)
@@ -83,3 +81,9 @@ Ensure your carousel is wrapped in an element with set width/height otherwise it
 ## Important
 
 The number of slideItems should be > than the perPage + 2, otherwise the transition animations might not work properly as there will be duplicate render issues due to React and how it might mess up tracking these items since the key will be duplicated.
+
+## Learn more
+
+More about the official spec:
+
+> https://m3.material.io/components/carousel/specs
