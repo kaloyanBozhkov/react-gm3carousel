@@ -2,7 +2,9 @@
 
 > https://m3.material.io/components/carousel/specs
 
-![Alt Text](./demo-gif.gif)
+## Preview
+
+![Alt Text](https://github.com/kaloyanBozhkov/react-gm3carousel/blob/master/demo-gif.gif?raw=true)
 
 # Usage instructions
 
