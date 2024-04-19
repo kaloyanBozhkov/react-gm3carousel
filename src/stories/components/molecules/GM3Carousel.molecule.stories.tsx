@@ -12,6 +12,7 @@ export const GM3CarouselStory: Story<{
   bigItemClassName: string;
   isVertical: boolean;
   withSmallItemsMaxSize: boolean;
+  gap: number;
 }> = ({
   perPage,
   speedS,
@@ -21,6 +22,7 @@ export const GM3CarouselStory: Story<{
   smallItemClassName,
   bigItemClassName,
   isVertical,
+  gap,
 }) => (
   <div
     className={twMerge(
@@ -37,6 +39,7 @@ export const GM3CarouselStory: Story<{
       bigItemClassName={bigItemClassName}
       smallItemClassName={smallItemClassName}
       pauseOnMouseEnter={pauseOnMouseEnter}
+      gap={gap}
       slides={DATA.map(({ id }, n) => {
         return {
           content: (
@@ -60,6 +63,7 @@ GM3CarouselStory.args = {
   smallItemClassName: "",
   bigItemClassName: "",
   isVertical: false,
+  gap: 16,
 };
 
 GM3CarouselStory.argTypes = {
@@ -71,6 +75,7 @@ GM3CarouselStory.argTypes = {
   pauseOnMouseEnter: { control: { type: "boolean" } },
   smallItemClassName: { control: { type: "text" } },
   bigItemClassName: { control: { type: "text" } },
+  gap: { control: { type: "number" } },
 };
 
 const DATA = [

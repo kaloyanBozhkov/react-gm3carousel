@@ -18,7 +18,7 @@ bun i react-gm3carousel
 
 ```
  import { GM3Carousel } from "react-gm3carousel";
- // below is optional, if you're already using TailwindCSS in your project
+ // below could be optional, if you're already using TailwindCSS in your project, but you should add it regardless
  import "react-gm3carousel/dist/index.css";
 ```
 
