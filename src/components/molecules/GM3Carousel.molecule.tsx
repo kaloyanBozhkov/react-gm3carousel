@@ -16,6 +16,7 @@ export const GM3Carousel = ({
   pauseOnMouseEnter = true,
   isVertical = false,
   slideWrapperClassName = "duration-500",
+  gap = 16,
 }: {
   className?: string;
   slides: { content: ReactNode; key: string }[];
@@ -28,20 +29,22 @@ export const GM3Carousel = ({
   pauseOnMouseEnter?: boolean;
   isVertical?: boolean;
   slideWrapperClassName?: string;
+  gap?: number;
 }) => {
   const [t, setT] = useState(false),
     // +2 for the flex-0 ones, speed is + 500ms for animation
     slidesSlice = useLoopData(
       slides,
       perPage + 2 + (withDualSmallItems ? 2 : 0),
-      speedS + 4,
+      speedS + 0.5,
       isPaused || (pauseOnMouseEnter && t)
     );
 
   return (
     <div
+      style={{ gap }}
       className={twMerge(
-        "flex h-full w-full gap-4",
+        "flex h-full w-full",
         className,
         isVertical ? "flex-col" : "flex-row"
       )}
@@ -80,17 +83,28 @@ export const GM3Carousel = ({
             }
 
             return true;
+          })(),
+          style = (() => {
+            if (isVertical) {
+              if (idx === slidesSlice.length - 1) return { marginBottom: -gap };
+              if (idx === 0) return { marginTop: -gap };
+
+              return;
+            }
+            if (idx === slidesSlice.length - 1) return { marginLeft: -gap };
+            if (idx === 0) return { marginRight: -gap };
           })();
 
         return (
           <div
             key={slide.key}
             className={twMerge(
-              "relative overflow-hidden rounded-[30px] transition-all duration-[4ss] ease-linear",
+              "relative overflow-hidden rounded-[30px] transition-all duration-500 ease-linear",
               variant,
               slideWrapperClassName
             )}
             data-active={isActive}
+            style={style}
           >
             {slide.content}
           </div>

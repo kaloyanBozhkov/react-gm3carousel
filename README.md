@@ -75,6 +75,14 @@ Ensure your carousel is wrapped in an element with set width/height otherwise it
 }
 ```
 
+## Notes
+
+You can target active slides with the blow selector
+
+```
+[data-active="true"] {}
+```
+
 ## Important
 
 The number of slideItems should be > than the perPage + 2, otherwise the transition animations might not work properly as there will be duplicate render issues due to React and how it might mess up tracking these items since the key will be duplicated.
