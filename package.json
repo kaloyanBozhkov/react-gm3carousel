@@ -1,6 +1,6 @@
 {
   "name": "react-gm3carousel",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Google Material 3 Carousel in React",
   "scripts": {
     "ladle": "ladle serve",

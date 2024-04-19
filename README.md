@@ -83,6 +83,19 @@ You can target active slides with the blow selector
 [data-active="true"] {}
 ```
 
+You can set a gap either by
+
+```
+gap={16}
+```
+
+or through class names (notice first/last child margins match the gap)
+
+```
+gap-2 [&>*:last-child]:-ml-2 [&>*:first-child]:-mr-2
+
+```
+
 ## Important
 
 The number of slideItems should be > than the perPage + 2, otherwise the transition animations might not work properly as there will be duplicate render issues due to React and how it might mess up tracking these items since the key will be duplicated.

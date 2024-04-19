@@ -8,6 +8,7 @@ export const GM3Carousel = ({
   className = "",
   slides,
   perPage,
+  gap = null,
   speedS = 2,
   withDualSmallItems = false,
   smallItemClassName = "",
@@ -16,7 +17,6 @@ export const GM3Carousel = ({
   pauseOnMouseEnter = true,
   isVertical = false,
   slideWrapperClassName = "gm3c-duration-500",
-  gap = 16,
 }: {
   className?: string;
   slides: { content: ReactNode; key: string }[];
@@ -29,7 +29,7 @@ export const GM3Carousel = ({
   pauseOnMouseEnter?: boolean;
   isVertical?: boolean;
   slideWrapperClassName?: string;
-  gap?: number;
+  gap?: number | null;
 }) => {
   const [t, setT] = useState(false),
     // +2 for the flex-0 ones, speed is + 500ms for animation
@@ -42,7 +42,7 @@ export const GM3Carousel = ({
 
   return (
     <div
-      style={{ gap }}
+      style={gap ? { gap } : {}}
       className={twMerge(
         "gm3c-flex gm3c-h-full gm3c-w-full",
         className,
@@ -87,10 +87,10 @@ export const GM3Carousel = ({
             return true;
           })(),
           style = (() => {
+            if (!gap) return;
             if (isVertical) {
               if (idx === slidesSlice.length - 1) return { marginBottom: -gap };
               if (idx === 0) return { marginTop: -gap };
-
               return;
             }
             if (idx === slidesSlice.length - 1) return { marginLeft: -gap };

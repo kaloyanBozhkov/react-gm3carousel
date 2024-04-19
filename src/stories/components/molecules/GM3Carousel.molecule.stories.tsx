@@ -12,7 +12,7 @@ export const GM3CarouselStory: Story<{
   bigItemClassName: string;
   isVertical: boolean;
   withSmallItemsMaxSize: boolean;
-  gap: number;
+  gap?: number | null;
 }> = ({
   perPage,
   speedS,

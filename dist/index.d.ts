@@ -16,7 +16,7 @@ declare const GM3Carousel: ({ className, slides, perPage, speedS, withDualSmallI
     pauseOnMouseEnter?: boolean;
     isVertical?: boolean;
     slideWrapperClassName?: string;
-    gap?: number;
+    gap?: number | null;
 }) => react_jsx_runtime.JSX.Element;
 
 export { GM3Carousel };

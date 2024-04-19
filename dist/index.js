@@ -82,7 +82,7 @@ var GM3Carousel = ({
   pauseOnMouseEnter = true,
   isVertical = false,
   slideWrapperClassName = "gm3c-duration-500",
-  gap = 16
+  gap
 }) => {
   const [t, setT] = (0, import_react2.useState)(false), slidesSlice = useLoopData_default(
     slides,
@@ -93,7 +93,7 @@ var GM3Carousel = ({
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadProps(__spreadValues({
-      style: { gap },
+      style: gap ? { gap } : {},
       className: (0, import_tailwind_merge.twMerge)(
         "gm3c-flex gm3c-h-full gm3c-w-full",
         className,
@@ -137,6 +137,8 @@ var GM3Carousel = ({
           }
           return true;
         })(), style = (() => {
+          if (!gap)
+            return;
           if (isVertical) {
             if (idx === slidesSlice.length - 1)
               return { marginBottom: -gap };
