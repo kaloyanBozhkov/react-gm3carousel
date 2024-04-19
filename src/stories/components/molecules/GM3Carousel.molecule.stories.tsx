@@ -11,6 +11,7 @@ export const GM3CarouselStory: Story<{
   smallItemClassName: string;
   bigItemClassName: string;
   isVertical: boolean;
+  withSmallItemsMaxSize: boolean;
 }> = ({
   perPage,
   speedS,

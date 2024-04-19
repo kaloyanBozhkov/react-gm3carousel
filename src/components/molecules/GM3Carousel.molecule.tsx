@@ -15,7 +15,6 @@ export const GM3Carousel = ({
   isPaused = false,
   pauseOnMouseEnter = true,
   isVertical = false,
-  withSmallItemsMaxSize = true,
   slideWrapperClassName = "duration-500",
 }: {
   className?: string;
@@ -28,7 +27,6 @@ export const GM3Carousel = ({
   isPaused?: boolean;
   pauseOnMouseEnter?: boolean;
   isVertical?: boolean;
-  withSmallItemsMaxSize?: boolean;
   slideWrapperClassName?: string;
 }) => {
   const [t, setT] = useState(false),
@@ -36,7 +34,7 @@ export const GM3Carousel = ({
     slidesSlice = useLoopData(
       slides,
       perPage + 2 + (withDualSmallItems ? 2 : 0),
-      speedS + 0.5,
+      speedS + 4,
       isPaused || (pauseOnMouseEnter && t)
     );
 
@@ -54,34 +52,45 @@ export const GM3Carousel = ({
     >
       {slidesSlice.map((slide, idx) => {
         const variant = (() => {
-          const maxSize = withSmallItemsMaxSize ? "grow-[40px]" : "";
+            if (idx === 0) return "flex-[0]";
+            if (idx === slidesSlice.length - 1) return "flex-[0]";
 
-          if (idx === 0) return "flex-[0]";
-          if (idx === slidesSlice.length - 1) return "flex-[0]";
+            if (idx === 1) return twMerge("flex-[0.33]", smallItemClassName);
+            if (idx === slidesSlice.length - 2)
+              return twMerge("flex-[0.33]", smallItemClassName);
 
-          if (idx === 1)
-            return twMerge("flex-[0.33]", maxSize, smallItemClassName);
-          if (idx === slidesSlice.length - 2)
-            return twMerge("flex-[0.33]", maxSize, smallItemClassName);
+            if (withDualSmallItems) {
+              if (idx === 2) return twMerge("flex-[0.33]", smallItemClassName);
+              if (idx === slidesSlice.length - 3)
+                return twMerge("flex-[0.33]", smallItemClassName);
+            }
 
-          if (withDualSmallItems) {
-            if (idx === 2)
-              return twMerge("flex-[0.33]", maxSize, smallItemClassName);
-            if (idx === slidesSlice.length - 3)
-              return twMerge("flex-[0.33]", maxSize, smallItemClassName);
-          }
+            return twMerge("flex-1", bigItemClassName);
+          })(),
+          isActive = (() => {
+            if (idx === 0) return;
+            if (idx === slidesSlice.length - 1) return;
 
-          return twMerge("flex-1", bigItemClassName);
-        })();
+            if (idx === 1) return;
+            if (idx === slidesSlice.length - 2) return;
+
+            if (withDualSmallItems) {
+              if (idx === 2) return;
+              if (idx === slidesSlice.length - 3) return;
+            }
+
+            return true;
+          })();
 
         return (
           <div
             key={slide.key}
             className={twMerge(
-              "relative overflow-hidden rounded-[30px] transition-all duration-500 ease-linear",
+              "relative overflow-hidden rounded-[30px] transition-all duration-[4ss] ease-linear",
               variant,
               slideWrapperClassName
             )}
+            data-active={isActive}
           >
             {slide.content}
           </div>

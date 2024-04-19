@@ -71,9 +71,6 @@ Ensure your carousel is wrapped in an element with set width/height otherwise it
 
 	pauseOnMouseEnter?: boolean;
 
-	// sets a width of 40px of the small previews/items as stated by Google Material Design
-	withSmallItemsMaxSize?: boolean;
-
 	slideWrapperClassName?: string;
 }
 ```
