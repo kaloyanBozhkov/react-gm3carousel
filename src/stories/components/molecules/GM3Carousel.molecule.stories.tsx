@@ -23,36 +23,41 @@ export const GM3CarouselStory: Story<{
   bigItemClassName,
   isVertical,
   gap,
-}) => (
-  <div
-    className={twMerge(
-      "bg-slate-100 overflow-hidden",
-      isVertical ? "h-[600px] w-[240px]" : " w-[600px] h-[240px]"
-    )}
-  >
-    <GM3Carousel
-      isVertical={isVertical}
-      perPage={perPage}
-      withDualSmallItems={withDualSmallItems}
-      speedS={speedS}
-      isPaused={isPaused}
-      bigItemClassName={bigItemClassName}
-      smallItemClassName={smallItemClassName}
-      pauseOnMouseEnter={pauseOnMouseEnter}
-      gap={gap}
-      slides={DATA.map(({ id }, n) => {
-        return {
-          content: (
-            <div className="h-full flex items-center justify-center bg-slate-400">
-              <p>Slide #{n + 1}</p>
-            </div>
-          ),
-          key: id,
-        };
-      })}
-    />
-  </div>
-);
+}) => {
+  const containerStyle = {
+    height: isVertical ? 600 : 240,
+    width: isVertical ? 240 : 600,
+  };
+
+  return (
+    <div
+      className={twMerge("gm3c-bg-slate-100 gm3c-overflow-hidden")}
+      style={containerStyle}
+    >
+      <GM3Carousel
+        isVertical={isVertical}
+        perPage={perPage}
+        withDualSmallItems={withDualSmallItems}
+        speedS={speedS}
+        isPaused={isPaused}
+        bigItemClassName={bigItemClassName}
+        smallItemClassName={smallItemClassName}
+        pauseOnMouseEnter={pauseOnMouseEnter}
+        gap={gap}
+        slides={DATA.map(({ id }, n) => {
+          return {
+            content: (
+              <div className="gm3c-h-full gm3c-flex gm3c-items-center gm3c-justify-center gm3c-bg-slate-400">
+                <p>Slide #{n + 1}</p>
+              </div>
+            ),
+            key: id,
+          };
+        })}
+      />
+    </div>
+  );
+};
 
 GM3CarouselStory.args = {
   perPage: 4,

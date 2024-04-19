@@ -15,7 +15,7 @@ export const GM3Carousel = ({
   isPaused = false,
   pauseOnMouseEnter = true,
   isVertical = false,
-  slideWrapperClassName = "duration-500",
+  slideWrapperClassName = "gm3c-duration-500",
   gap = 16,
 }: {
   className?: string;
@@ -44,9 +44,9 @@ export const GM3Carousel = ({
     <div
       style={{ gap }}
       className={twMerge(
-        "flex h-full w-full",
+        "gm3c-flex gm3c-h-full gm3c-w-full",
         className,
-        isVertical ? "flex-col" : "flex-row"
+        isVertical ? "gm3c-flex-col" : "gm3c-flex-row"
       )}
       {...(pauseOnMouseEnter && {
         onMouseEnter: () => setT(true),
@@ -55,20 +55,22 @@ export const GM3Carousel = ({
     >
       {slidesSlice.map((slide, idx) => {
         const variant = (() => {
-            if (idx === 0) return "flex-[0]";
-            if (idx === slidesSlice.length - 1) return "flex-[0]";
+            if (idx === 0) return "gm3c-flex-[0]";
+            if (idx === slidesSlice.length - 1) return "gm3c-flex-[0]";
 
-            if (idx === 1) return twMerge("flex-[0.33]", smallItemClassName);
+            if (idx === 1)
+              return twMerge("gm3c-flex-[0.33]", smallItemClassName);
             if (idx === slidesSlice.length - 2)
-              return twMerge("flex-[0.33]", smallItemClassName);
+              return twMerge("gm3c-flex-[0.33]", smallItemClassName);
 
             if (withDualSmallItems) {
-              if (idx === 2) return twMerge("flex-[0.33]", smallItemClassName);
+              if (idx === 2)
+                return twMerge("gm3c-flex-[0.33]", smallItemClassName);
               if (idx === slidesSlice.length - 3)
-                return twMerge("flex-[0.33]", smallItemClassName);
+                return twMerge("gm3c-flex-[0.33]", smallItemClassName);
             }
 
-            return twMerge("flex-1", bigItemClassName);
+            return twMerge("gm3c-flex-1", bigItemClassName);
           })(),
           isActive = (() => {
             if (idx === 0) return;
@@ -99,7 +101,7 @@ export const GM3Carousel = ({
           <div
             key={slide.key}
             className={twMerge(
-              "relative overflow-hidden rounded-[30px] transition-all duration-500 ease-linear",
+              "gm3c-relative gm3c-overflow-hidden gm3c-rounded-[30px] gm3c-transition-all gm3c-duration-500 gm3c-ease-linear",
               variant,
               slideWrapperClassName
             )}

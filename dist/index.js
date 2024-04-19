@@ -81,21 +81,23 @@ var GM3Carousel = ({
   isPaused = false,
   pauseOnMouseEnter = true,
   isVertical = false,
-  slideWrapperClassName = "duration-500"
+  slideWrapperClassName = "gm3c-duration-500",
+  gap = 16
 }) => {
   const [t, setT] = (0, import_react2.useState)(false), slidesSlice = useLoopData_default(
     slides,
     perPage + 2 + (withDualSmallItems ? 2 : 0),
-    speedS + 4,
+    speedS + 0.5,
     isPaused || pauseOnMouseEnter && t
   );
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
     "div",
     __spreadProps(__spreadValues({
+      style: { gap },
       className: (0, import_tailwind_merge.twMerge)(
-        "flex h-full w-full gap-4",
+        "gm3c-flex gm3c-h-full gm3c-w-full",
         className,
-        isVertical ? "flex-col" : "flex-row"
+        isVertical ? "gm3c-flex-col" : "gm3c-flex-row"
       )
     }, pauseOnMouseEnter && {
       onMouseEnter: () => setT(true),
@@ -104,20 +106,20 @@ var GM3Carousel = ({
       children: slidesSlice.map((slide, idx) => {
         const variant = (() => {
           if (idx === 0)
-            return "flex-[0]";
+            return "gm3c-flex-[0]";
           if (idx === slidesSlice.length - 1)
-            return "flex-[0]";
+            return "gm3c-flex-[0]";
           if (idx === 1)
-            return (0, import_tailwind_merge.twMerge)("flex-[0.33]", smallItemClassName);
+            return (0, import_tailwind_merge.twMerge)("gm3c-flex-[0.33]", smallItemClassName);
           if (idx === slidesSlice.length - 2)
-            return (0, import_tailwind_merge.twMerge)("flex-[0.33]", smallItemClassName);
+            return (0, import_tailwind_merge.twMerge)("gm3c-flex-[0.33]", smallItemClassName);
           if (withDualSmallItems) {
             if (idx === 2)
-              return (0, import_tailwind_merge.twMerge)("flex-[0.33]", smallItemClassName);
+              return (0, import_tailwind_merge.twMerge)("gm3c-flex-[0.33]", smallItemClassName);
             if (idx === slidesSlice.length - 3)
-              return (0, import_tailwind_merge.twMerge)("flex-[0.33]", smallItemClassName);
+              return (0, import_tailwind_merge.twMerge)("gm3c-flex-[0.33]", smallItemClassName);
           }
-          return (0, import_tailwind_merge.twMerge)("flex-1", bigItemClassName);
+          return (0, import_tailwind_merge.twMerge)("gm3c-flex-1", bigItemClassName);
         })(), isActive = (() => {
           if (idx === 0)
             return;
@@ -134,16 +136,29 @@ var GM3Carousel = ({
               return;
           }
           return true;
+        })(), style = (() => {
+          if (isVertical) {
+            if (idx === slidesSlice.length - 1)
+              return { marginBottom: -gap };
+            if (idx === 0)
+              return { marginTop: -gap };
+            return;
+          }
+          if (idx === slidesSlice.length - 1)
+            return { marginLeft: -gap };
+          if (idx === 0)
+            return { marginRight: -gap };
         })();
         return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
           "div",
           {
             className: (0, import_tailwind_merge.twMerge)(
-              "relative overflow-hidden rounded-[30px] transition-all duration-[4ss] ease-linear",
+              "gm3c-relative gm3c-overflow-hidden gm3c-rounded-[30px] gm3c-transition-all gm3c-duration-500 gm3c-ease-linear",
               variant,
               slideWrapperClassName
             ),
             "data-active": isActive,
+            style,
             children: slide.content
           },
           slide.key
