@@ -365,9 +365,6 @@ video {
 .flex-\[0\] {
   flex: 0;
 }
-.grow-\[40px\] {
-  flex-grow: 40px;
-}
 .flex-row {
   flex-direction: row;
 }
@@ -404,6 +401,9 @@ video {
 }
 .duration-500 {
   transition-duration: 500ms;
+}
+.duration-\[4ss\] {
+  transition-duration: 4ss;
 }
 .ease-linear {
   transition-timing-function: linear;

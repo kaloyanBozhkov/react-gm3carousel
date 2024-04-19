@@ -1,7 +1,7 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactNode } from 'react';
 
-declare const GM3Carousel: ({ className, slides, perPage, speedS, withDualSmallItems, smallItemClassName, bigItemClassName, isPaused, pauseOnMouseEnter, isVertical, withSmallItemsMaxSize, slideWrapperClassName, }: {
+declare const GM3Carousel: ({ className, slides, perPage, speedS, withDualSmallItems, smallItemClassName, bigItemClassName, isPaused, pauseOnMouseEnter, isVertical, slideWrapperClassName, }: {
     className?: string;
     slides: {
         content: ReactNode;
@@ -15,7 +15,6 @@ declare const GM3Carousel: ({ className, slides, perPage, speedS, withDualSmallI
     isPaused?: boolean;
     pauseOnMouseEnter?: boolean;
     isVertical?: boolean;
-    withSmallItemsMaxSize?: boolean;
     slideWrapperClassName?: string;
 }) => react_jsx_runtime.JSX.Element;
 
